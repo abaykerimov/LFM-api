@@ -18,5 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('test', function (){
-    return 'ok';
+    return 'working!';
 });
+
+Route::resource('teams', 'TeamController');
+Route::resource('players', 'PlayerController');
+Route::resource('auction', 'AuctionController');
