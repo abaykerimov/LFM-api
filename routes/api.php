@@ -24,3 +24,4 @@ Route::get('test', function (){
 Route::resource('teams', 'TeamController');
 Route::resource('players', 'PlayerController');
 Route::resource('auction', 'AuctionController');
+Route::resource('user', 'UserController');

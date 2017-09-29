@@ -18,9 +18,9 @@ class AuctionController extends Controller
         return response()->json($auction);
     }
 
-    public function show($id, Auction $auction) {
-        $item = Auction::findOrFail($id)->get();
-        $item->offers = $auction->offers()->get();
+    public function show(Auction $auction) {
+        //$item = Auction::findOrFail($id)->get();
+        $auction->offers = $auction->offers()->get();
         return response()->json($auction);
     }
 }
