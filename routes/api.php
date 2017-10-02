@@ -25,3 +25,4 @@ Route::resource('teams', 'TeamController');
 Route::resource('players', 'PlayerController');
 Route::resource('auction', 'AuctionController');
 Route::resource('user', 'UserController');
+Route::resource('offer', 'OfferController');

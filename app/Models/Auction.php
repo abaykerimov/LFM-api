@@ -21,7 +21,7 @@ class Auction extends Model
     protected $dates = ['created_at', 'updated_at'];
 
     public function owner() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function player() {
@@ -33,6 +33,6 @@ class Auction extends Model
     }
 
     public function offers() {
-        return $this->hasMany(Offer::class);
+        return $this->hasMany(Offer::class, 'auction_id');
     }
 }

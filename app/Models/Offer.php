@@ -15,13 +15,17 @@ class Offer extends Model
     ];
 
     protected $dates = ['created_at', 'updated_at'];
+	protected $touches = ['auction'];
 
     public function auction() {
-        return $this->belongsTo(Auction::class);
+        return $this->belongsTo(Auction::class, 'auction_id');
     }
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
+	public function team() {
+        return $this->belongsTo(Team::class, 'team_id');
+    }
 }
