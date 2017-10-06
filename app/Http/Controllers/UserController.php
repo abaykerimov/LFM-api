@@ -11,8 +11,13 @@ class UserController extends Controller
         $find = User::find($request->id);
 
         if (count($find) == 0) {
-            $user->create($request->all());
+            $user->create($request->only(['id', 'photo_200', 'first_name', 'last_name']));
         }
+        return response()->json($user);
+    }
+	
+	public function show($id) {
+		$user = User::find($id);		
         return response()->json($user);
     }
 }

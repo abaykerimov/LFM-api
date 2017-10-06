@@ -3,42 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Auction;
+use App\Models\Offer;
+use App\Models\UserAuction;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\DB;
 
 class AuctionController extends Controller
 {
     public function index() {
-		/*$auctions = Auction::leftjoin('offers as o', 'o.auction_id', '=', 'auctions.id')
-		   ->orderBy('o.created_at', 'desc')
-		   ->select('auctions.*')       
-		   ->with('offers')
-			->with('owner')
-			->distinct()
-		   ->get();*/
-		
-		
-        $auctions = Auction::orderBy('updated_at', 'desc')->get();
-		foreach($auctions as $auction) {
-			if ($auction->offers->isNotEmpty()){
-				$auction->offers = Auction::whereId($auction->offers)->get();
-				
-			}
-			$auction->owner = Auction::whereId($auction->owner)->get();
-		
-		}
-        return response()->json($auctions);
+		$auctions = Auction::with('owner', 'player')->orderBy('updated_at', 'desc')->get();
+        foreach ($auctions as $auction) {
+            $auction->offers = Offer::with('user')->where('auction_id', $auction->id)->orderBy('created_at', 'desc')->get();
+        }
+		return response()->json($auctions);
     }
 
     public function store(Request $request, Auction $auction) {
-        $auction->create($request->all());
-        return response()->json($auction);
+        $data = $auction->create($request->all());
+        if ($data) {
+            UserAuction::create(['user_id' => $data->user_id, 'auction_id' => $data->id]);
+        }
+        return response()->json($data);
     }
 
     public function show(Auction $auction) {
         //$item = Auction::findOrFail($id)->get();
         $auction->offers = $auction->offers()->get();
+		$auction->player = Auction::whereId($auction->player)->get();
+        $auction->team = Auction::whereId($auction->team)->get();
         return response()->json($auction);
     }
 }

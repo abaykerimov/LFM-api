@@ -10,10 +10,7 @@ class PlayerController extends Controller
 {
     public function index(Request $request, Player $player) {
         $keyword = $request->search;
-        $query = $player->where('title', 'LIKE', '%'.$keyword.'%')->orderBy('skill', 'DESC')->get()->take(10);
-        foreach ($query as $item) {
-            $item->team = $item->team()->get();
-        }
+        $query = $player->with('team')->where('title', 'LIKE', '%'.$keyword.'%')->orderBy('skill', 'DESC')->get()->take(10);
         return response()->json($query, 200);
     }
 }

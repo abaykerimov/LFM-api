@@ -9,7 +9,8 @@ class AuctionsOption extends Model
 {
     protected $fillable = [
         'started_at',
-        'user_id'
+        'user_id',
+        'turnir_year'
     ];
 
     protected $dates = ['created_at', 'started_at', 'updated_at'];

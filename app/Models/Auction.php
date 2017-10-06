@@ -25,7 +25,11 @@ class Auction extends Model
     }
 
     public function player() {
-        return $this->hasOne(Player::class);
+        return $this->belongsTo(Player::class, 'player_id');
+    }
+
+    public function team() {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 
     public function auctionOption() {
