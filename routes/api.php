@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 
+header('Access-Control-Allow-Origin:  *');
+header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
+header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +27,9 @@ Route::get('test', function (){
 Route::resource('teams', 'TeamController');
 Route::resource('players', 'PlayerController');
 Route::resource('auction', 'AuctionController');
+Route::resource('user', 'UserController');
+Route::resource('offer', 'OfferController');
+Route::resource('option', 'AuctionOptionController');
+Route::resource('bookmarks', 'UserAuctionController');
+
+Route::get('getBookmark/{user_id}/{auction_id}', 'UserAuctionController@getBookmark');

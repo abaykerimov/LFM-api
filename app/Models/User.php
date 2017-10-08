@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'is_admin'
+        'id', 'photo_200', 'first_name', 'last_name',
     ];
 
     /**
@@ -23,9 +23,13 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
+    /*protected $hidden = [
         'password', 'remember_token',
     ];
+
+    protected $casts = [
+        'is_admin' => 'boolean',
+    ];*/
 
     public function getAuctionOptions() {
         return $this->hasMany(AuctionsOption::class);
