@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
-use App\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
+// TEST
 class User extends Authenticatable
 {
     use Notifiable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'id', 'photo_200', 'first_name', 'last_name',
+        'email', 'password',
     ];
 
     /**
@@ -24,25 +25,25 @@ class User extends Authenticatable
      *
      * @var array
      */
-    /*protected $hidden = [
+    protected $hidden = [
         'password', 'remember_token',
     ];
 
-    protected $casts = [
-        'is_admin' => 'boolean',
-    ];*/
+//    protected $casts = [
+//        'is_admin' => 'boolean',
+//    ];
 
-    public function getAuctionOptions() {
-        return $this->hasMany(AuctionsOption::class);
-    }
-
-    public function auctions() {
-        return $this->hasMany(Auction::class);
-    }
-
-    public function offers() {
-        return $this->hasMany(Offer::class);
-    }
+//    public function getAuctionOptions() {
+//        return $this->hasMany(AuctionsOption::class);
+//    }
+//
+//    public function auctions() {
+//        return $this->hasMany(Auction::class);
+//    }
+//
+//    public function offers() {
+//        return $this->hasMany(Offer::class);
+//    }
 
     // TEST
     public function messages()

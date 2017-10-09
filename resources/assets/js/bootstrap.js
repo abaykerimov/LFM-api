@@ -1,3 +1,4 @@
+window.Vue = require('vue');
 
 window._ = require('lodash');
 
@@ -52,6 +53,7 @@ if (token) {
 //     key: 'your-pusher-key'
 // });
 import Echo from "laravel-echo"
+window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',

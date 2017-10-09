@@ -58,3 +58,15 @@ Route::get('/', function () {
 //    event(new App\Events\HelloPusherEvent('Hi there Pusher!'));
 //    return "Event has been sent!";
 //});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+// TEST
+
+Auth::routes();
+
+Route::get('/', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');
