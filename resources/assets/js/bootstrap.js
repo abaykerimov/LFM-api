@@ -51,3 +51,11 @@ if (token) {
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+import Echo from "laravel-echo"
+
+window.Echo = new Echo({
+    broadcaster: 'pusher',
+    key: '88f385f7d513e8876a5e',
+    cluster: 'ap2',
+    encrypted: true
+});

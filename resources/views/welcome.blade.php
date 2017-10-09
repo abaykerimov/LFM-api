@@ -92,4 +92,22 @@
             </div>
         </div>
     </body>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script>
+
+        {{--Pusher.log = function(msg) {--}}
+            {{--console.log(msg);--}}
+        {{--};--}}
+
+        {{--var pusher = new Pusher("{{env("PUSHER_APP_KEY")}}", {--}}
+            {{--cluster: 'ap2',--}}
+            {{--encrypted: true--}}
+        {{--});--}}
+
+        {{--var channel = pusher.subscribe('my-channel');--}}
+        {{--channel.bind('my-event', function(data) {--}}
+{{--//            console.log(data);--}}
+            {{--console.log(data.text);--}}
+        {{--});--}}
+    </script>
 </html>
