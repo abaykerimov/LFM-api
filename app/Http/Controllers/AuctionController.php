@@ -35,4 +35,9 @@ class AuctionController extends Controller
         $auction->team = Auction::whereId($auction->team)->get();
         return response()->json($auction);
     }
+
+    public function update(Request $request, Auction $auction) {
+        $data = $auction->update($request->all());
+        return response()->json($data);
+    }
 }
